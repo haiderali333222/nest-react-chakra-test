@@ -19,13 +19,9 @@ Before you begin, ensure that you have the following installed:
 - **NestJS CLI** (optional for project creation)
   ```bash
   npm install -g @nestjs/cli
+  ```
 
-
-
-
-
-## To Run 
+## To Run
 
 Make sure db url is added in env
 npm run start:dev
-

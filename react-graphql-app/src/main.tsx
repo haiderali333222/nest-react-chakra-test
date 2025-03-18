@@ -6,15 +6,13 @@ import client from "./services/apollo-client";
 import App from "./App";
 import { Toaster } from "./components/ui/toaster";
 
-
-
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <Provider >
+      <Provider>
         <Toaster />
         <App />
       </Provider>
     </ApolloProvider>
-  </React.StrictMode>
+  </React.StrictMode>,
 );

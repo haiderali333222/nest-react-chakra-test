@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 // Fetch all saved data
 export const GET_ITEMS = gql`
@@ -25,6 +25,6 @@ export const CREATE_ITEM = gql`
 // Mutation to create a new record
 export const DELETE_ITEM = gql`
   mutation DeleteItem($id: String!) {
-    deleteItem(id: $id) 
+    deleteItem(id: $id)
   }
 `;

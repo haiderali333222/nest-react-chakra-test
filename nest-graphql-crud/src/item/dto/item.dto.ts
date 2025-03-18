@@ -8,7 +8,7 @@ export class Item {
   @Field()
   name: string;
 
-  @Field(()=>Int)
+  @Field(() => Int)
   quantity: number;
 
   @Field()

@@ -2,19 +2,18 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 import { Field, ObjectType, Int } from '@nestjs/graphql';
 
-@Schema({ timestamps: true }) 
-@ObjectType() 
+@Schema({ timestamps: true })
+@ObjectType()
 export class Item extends Document {
-  
-  @Prop({ required: true }) 
+  @Prop({ required: true })
   @Field()
   name: string;
 
-  @Prop({ required: true }) 
+  @Prop({ required: true })
   @Field(() => Int)
   quantity: number;
 
-  @Prop({ default: Date.now }) 
+  @Prop({ default: Date.now })
   @Field()
   createdAt: Date;
 }

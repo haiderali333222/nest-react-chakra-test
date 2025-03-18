@@ -1,10 +1,10 @@
-import { useQuery, useMutation } from '@apollo/client';
-import { GET_ITEMS, DELETE_ITEM } from '../../graphql/todo';
-import { Box, Heading, Spinner, Text, VStack } from '@chakra-ui/react';
-import { useState, useEffect } from 'react';
-import DataEntryForm from './form';
-import ItemList from './list';
-import { toaster } from '../ui/toaster';
+import { useQuery, useMutation } from "@apollo/client";
+import { GET_ITEMS, DELETE_ITEM } from "../../graphql/todo";
+import { Box, Heading, Spinner, Text, VStack } from "@chakra-ui/react";
+import { useState, useEffect } from "react";
+import DataEntryForm from "./form";
+import ItemList from "./list";
+import { toaster } from "../ui/toaster";
 
 const Todo = () => {
   const [items, setItems] = useState<any[]>([]);
@@ -20,27 +20,27 @@ const Todo = () => {
   const [deleteItem] = useMutation(DELETE_ITEM, {
     onCompleted: () => {
       toaster.create({
-        title: 'Success',
-        description: 'Item deleted successfully.',
-        type: 'success',
+        title: "Success",
+        description: "Item deleted successfully.",
+        type: "success",
       });
-      refetch(); 
+      refetch();
     },
     onError: () => {
       toaster.create({
-        title: 'Error',
-        description: 'Failed to delete item.',
-        type: 'error',
+        title: "Error",
+        description: "Failed to delete item.",
+        type: "error",
       });
     },
   });
 
   const handleItemAdded = () => {
-    refetch(); 
+    refetch();
     toaster.create({
-      title: 'Success',
-      description: 'Item added successfully.',
-      type: 'success',
+      title: "Success",
+      description: "Item added successfully.",
+      type: "success",
     });
   };
 
@@ -48,7 +48,7 @@ const Todo = () => {
     if (data?.items) {
       const newItems = data.items.filter((newItem: { id: string }) => {
         return !items.some(
-          (existingItem: { id: string }) => existingItem.id === newItem.id
+          (existingItem: { id: string }) => existingItem.id === newItem.id,
         );
       });
 
@@ -70,12 +70,12 @@ const Todo = () => {
   };
 
   if (loading && !data) return <Spinner />;
-  if (error) return <Text color='red'>Error: {error.message}</Text>;
+  if (error) return <Text color="red">Error: {error.message}</Text>;
 
   return (
-    <Box maxW='100%'>
+    <Box maxW="100%">
       <VStack paddingX={60}>
-        <Heading as='h1' size='xl' mb={6}>
+        <Heading as="h1" size="xl" mb={6}>
           Shopping List
         </Heading>
         <DataEntryForm onItemAdded={handleItemAdded} />
@@ -85,7 +85,7 @@ const Todo = () => {
           deleteItem={deleteItem}
           loading={loading}
           loadMoreItems={loadMoreItems}
-          hasMore={hasMoreItems} 
+          hasMore={hasMoreItems}
         />
       </VStack>
     </Box>

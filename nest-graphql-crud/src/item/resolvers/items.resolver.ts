@@ -7,14 +7,14 @@ import { UpdateItemInput } from '../dto/updateItem.dto';
 @Resolver(() => Item)
 export class ItemResolver {
   constructor(private readonly itemServce: ItemServce) {}
-  
+
   @Query(() => [Item], { name: 'items' })
   async findAll(
     @Args('limit', { type: () => Int, defaultValue: 10 }) limit: number,
-    @Args('skip', { type: () => Int, defaultValue: 0 }) skip: number
+    @Args('skip', { type: () => Int, defaultValue: 0 }) skip: number,
   ) {
     const result = await this.itemServce.findAll(limit, skip);
-    return result;  
+    return result;
   }
 
   @Query(() => Item, { name: 'item', nullable: true })
@@ -29,9 +29,9 @@ export class ItemResolver {
 
   @Mutation(() => Item)
   async updateItem(
-    @Args('id') id: string, 
-    @Args('input') input: UpdateItemInput, 
-  ): Promise<Item|null> {
+    @Args('id') id: string,
+    @Args('input') input: UpdateItemInput,
+  ): Promise<Item | null> {
     return this.itemServce.updateItem(id, input);
   }
 

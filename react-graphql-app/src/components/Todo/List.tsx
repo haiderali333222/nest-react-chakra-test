@@ -1,6 +1,14 @@
 import { Box, Button, Text, VStack } from "@chakra-ui/react";
 import { useState } from "react";
-import { DialogRoot, DialogContent, DialogHeader, DialogBody, DialogFooter, DialogTitle, DialogBackdrop } from "../ui/dialog"; 
+import {
+  DialogRoot,
+  DialogContent,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
+  DialogTitle,
+  DialogBackdrop,
+} from "../ui/dialog";
 
 const ItemList = ({
   items,
@@ -21,7 +29,9 @@ const ItemList = ({
         await deleteItem({ variables: { id: selectedItemId } });
 
         // Remove the item from the local state (if it's controlled in this component)
-        setItems((prevItems: any) => prevItems.filter((item: any) => item.id !== selectedItemId));
+        setItems((prevItems: any) =>
+          prevItems.filter((item: any) => item.id !== selectedItemId),
+        );
 
         setIsDialogOpen(false); // Close the dialog after deletion
       } catch (error) {
@@ -37,42 +47,46 @@ const ItemList = ({
         {items.length === 0 ? (
           <Text>No items found.</Text>
         ) : (
-          items.map((item: { id: string; name: string; description: string; quantity: number }) => (
-            <Box
-              key={item.id}
-              display="flex"
-              justifyContent="space-between"
-              p={3}
-              borderWidth="1px"
-              borderRadius="md"
-              width="100%"
-            >
-              <Box>
-                <Text fontWeight="bold">{item.name}</Text>
-                <Text>{item.description}</Text>
-                <Text>Quantity: {item.quantity}</Text> {/* Display quantity */}
-              </Box>
-              <Button
-                colorScheme="red"
-                onClick={() => {
-                  setSelectedItemId(item.id);
-                  setIsDialogOpen(true); // Open dialog when delete is clicked
-                }}
+          items.map(
+            (item: {
+              id: string;
+              name: string;
+              description: string;
+              quantity: number;
+            }) => (
+              <Box
+                key={item.id}
+                display="flex"
+                justifyContent="space-between"
+                p={3}
+                borderWidth="1px"
+                borderRadius="md"
+                width="100%"
               >
-                Delete
-              </Button>
-            </Box>
-          ))
+                <Box>
+                  <Text fontWeight="bold">{item.name}</Text>
+                  <Text>{item.description}</Text>
+                  <Text>Quantity: {item.quantity}</Text>{" "}
+                  {/* Display quantity */}
+                </Box>
+                <Button
+                  colorScheme="red"
+                  onClick={() => {
+                    setSelectedItemId(item.id);
+                    setIsDialogOpen(true); // Open dialog when delete is clicked
+                  }}
+                >
+                  Delete
+                </Button>
+              </Box>
+            ),
+          )
         )}
       </VStack>
 
       {hasMore && (
         <Box mt={4} display="flex" justifyContent="center">
-          <Button
-            onClick={loadMoreItems}
-            loading={loading}
-            disabled={loading}
-          >
+          <Button onClick={loadMoreItems} loading={loading} disabled={loading}>
             {loading ? "Loading..." : "Load More"}
           </Button>
         </Box>

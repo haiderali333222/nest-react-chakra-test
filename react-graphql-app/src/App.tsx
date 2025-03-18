@@ -1,11 +1,8 @@
-import Todo from './components/todo'
-import './App.css'
+import Todo from "./components/todo";
+import "./App.css";
 
 function App() {
-
-  return (
-     <Todo />
-  )
+  return <Todo />;
 }
 
-export default App
+export default App;

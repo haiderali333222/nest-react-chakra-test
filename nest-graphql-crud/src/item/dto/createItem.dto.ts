@@ -8,7 +8,7 @@ export class CreateInputItem {
   @IsNotEmpty()
   name: string;
 
-  @Field(()=>Int)
+  @Field(() => Int)
   @IsNumber()
   quantity: number;
 }

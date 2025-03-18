@@ -8,7 +8,6 @@ Delete Items: Users can delete items from the shopping list with a confirmation 
 Pagination: The list supports loading items in pages with a "Load More" button.
 Toasts: Success and error messages are displayed using toasts for interactions like adding or deleting items.
 
-
 Technologies Used
 React: Frontend JavaScript library for building the user interface.
 Chakra UI: A simple, modular, and accessible component library for React.

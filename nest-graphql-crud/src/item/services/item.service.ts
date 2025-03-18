@@ -10,11 +10,7 @@ export class ItemServce {
   constructor(@InjectModel(Item.name) private itemModel: Model<Item>) {}
 
   async findAll(limit: number = 10, skip: number = 0): Promise<Item[]> {
-    const items = await this.itemModel
-      .find()
-      .skip(skip)
-      .limit(limit)
-      .exec();
+    const items = await this.itemModel.find().skip(skip).limit(limit).exec();
     return items;
   }
 
@@ -28,10 +24,12 @@ export class ItemServce {
   }
 
   async updateItem(id: string, input: UpdateItemInput): Promise<Item> {
-    const updatedItem = await this.itemModel.findByIdAndUpdate(id, input, {
-      new: true,
-      runValidators: true,
-    }).exec();
+    const updatedItem = await this.itemModel
+      .findByIdAndUpdate(id, input, {
+        new: true,
+        runValidators: true,
+      })
+      .exec();
 
     if (!updatedItem) {
       throw new Error(`Item with id ${id} not found`);

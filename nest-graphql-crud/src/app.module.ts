@@ -12,11 +12,10 @@ import { ItemModule } from './item/item.module';
 
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: join(process.cwd(), 'src/schema.gql'), 
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
     }),
     DatabaseModule,
-    ItemModule, 
+    ItemModule,
   ],
-
 })
 export class AppModule {}
